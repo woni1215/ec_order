@@ -1,0 +1,20 @@
+<p-sidebar [(visible)]="Sidebar" [baseZIndex]="10000">
+  <h3>Left Sidebar</h3>
+</p-sidebar>
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <button pButton pRipple type="button" icon="pi pi-bars" (click)=visibleSidebar()
+      class="p-button-rounded p-button-secondary p-button-text"></button>
+    <span>
+      <a class="title" routerLink="/main/dashboard">電商訂貨系統</a>
+      <a class="title" routerLink="/main/order">訂單管理</a>
+      <a class="title" routerLink="/main/bill">結算單管理</a>
+      <a class="title" routerLink="/main/company">廠商管理</a>
+    </span>
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-secondary p-button-text"
+      routerLink="/login"></button>
+  </div>
+</p-toolbar>
