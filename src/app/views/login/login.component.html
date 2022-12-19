@@ -1,0 +1,49 @@
+<!-- <div class="login-wrapper text-center">
+
+  <div class="login-box-group">
+    <div class="login-box">
+
+      <div class="login-logo">
+        電商訂貨系統
+        <img src="./assets/img/logo/logo.png" alt="logo">
+      </div>
+
+      <h1>
+        登入
+      </h1>
+
+      <div class="login-btn-group">
+        <a routerLink="/main">
+          忘記密碼?
+        </a>
+        <a class="btn">
+          登入
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="row ;text-center">
+  <p-card [style]="{'width': '25rem', 'margin-top': '10%', 'margin-left': '35%'}">
+    <h1>電商訂貨系統</h1>
+    <div class="field">
+      <label for="username">帳號：</label>
+      <input id="username" type="username" placeholder="請輸入您的帳號" pInputText />
+    </div>
+    <div class="field" style="margin-top: 20px;">
+      <label for="password">密碼：</label>
+      <input id="password" type="text" placeholder="請輸入您的密碼" pInputText />
+      <br>
+      <!-- <small id="username1-help" class="block">Enter your username to reset your password.</small> -->
+    </div>
+    <br>
+    <div style="margin-left: 15%;">
+      <p-button label="登入"></p-button> <span style="margin-left: 5%;"><a routerLink='/main'>忘記密碼?</a></span>
+    </div>
+    <br>
+    <div style="margin-left: 10%;"></div>
+    <div style="margin-left: 10%;">
+      <label for="text">還沒註冊嗎？　</label><a routerLink='/main/dashboard'>註冊帳戶</a>
+    </div>
+  </p-card>
+</div>
