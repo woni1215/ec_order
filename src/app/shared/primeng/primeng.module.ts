@@ -39,9 +39,11 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { TooltipModule } from 'primeng/tooltip';
 import { ChipsModule } from 'primeng/chips';
 import { ToolbarModule } from 'primeng/toolbar';
-
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
+  providers: [MessageService],
   declarations: [],
   imports: [
     CommonModule,
@@ -85,7 +87,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     TabMenuModule,
     TooltipModule,
     ChipsModule,
-    ToolbarModule
+    ToolbarModule,
+    SplitButtonModule
   ]
 })
 export class PrimengModule { }

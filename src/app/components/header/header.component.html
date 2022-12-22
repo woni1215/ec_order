@@ -1,10 +1,13 @@
 <p-sidebar [(visible)]="Sidebar" [baseZIndex]="10000">
   <h3>Left Sidebar</h3>
 </p-sidebar>
+
 <p-toolbar>
   <div class="p-toolbar-group-left">
-    <button pButton pRipple type="button" icon="pi pi-bars" (click)=visibleSidebar()
-      class="p-button-rounded p-button-secondary p-button-text"></button>
+    <!-- <button pButton pRipple type="button" icon="pi pi-bars" (click)=visibleSidebar()
+      class="p-button-rounded p-button-secondary p-button-text"></button> -->
+
+    <!-- <p-splitButton icon="pi pi-bars" [model]="items" styleClass="p-button-rounded p-button-secondary"></p-splitButton> -->
     <span>
       <a class="title" routerLink="/main/dashboard">電商訂貨系統</a>
       <a class="title" routerLink="/main/order">訂單管理</a>
