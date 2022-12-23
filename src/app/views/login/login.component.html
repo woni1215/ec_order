@@ -30,23 +30,16 @@
       <label for="username">帳號：</label>
       <input id="username" type="username" placeholder="請輸入您的帳號" pInputText />
     </div>
-    <!-- <div class="field" style="margin-top: 20px;">
-      <label for="password">密碼：</label>
-      <p-password  [toggleMask]="true"></p-password>
-    </div> -->
     <div class="field" style="margin-top: 20px;">
       <label for="password">密碼：</label>
-      <input id="password" type="text" placeholder="請輸入您的密碼" pInputText />
-      <br>
+      <input type="password" [feedback]="false" placeholder="請輸入您的密碼" pPassword />
       <!-- <small id="username1-help" class="block">Enter your username to reset your password.</small> -->
     </div>
-    <br>
-    <div style="margin-left: 15%;">
+    <div style="margin-left: 15%; margin-top: 20px">
       <p-button label="登入"></p-button> <span style="margin-left: 5%;"><a routerLink='/main'>忘記密碼?</a></span>
     </div>
-    <div style="margin-left: 10%;"></div>
-    <div style="margin-left: 10%;">
-      <label for="text">還沒註冊嗎？　</label><a routerLink="/signup" routerLinkActive="active">signup</a>
+    <div style="margin-left: 10%; margin-top: 20px">
+      <label for="text">還沒註冊嗎？　</label><a routerLink="/signup" routerLinkActive="active">註冊帳號</a>
     </div>
   </p-card>
 </div>

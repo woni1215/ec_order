@@ -1,7 +1,6 @@
 <p-sidebar [(visible)]="Sidebar" [baseZIndex]="10000">
   <h3>Left Sidebar</h3>
 </p-sidebar>
-
 <p-toolbar>
   <div class="p-toolbar-group-left">
     <!-- <button pButton pRipple type="button" icon="pi pi-bars" (click)=visibleSidebar()
@@ -16,8 +15,14 @@
     </span>
   </div>
 
-  <div class="p-toolbar-group-right">
-    <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-secondary p-button-text"
-      routerLink="/login"></button>
+  <div class="p-toolbar-group-right" style="margin-right: 20px;">
+    <p-button icon="pi pi-user" (click)="op.toggle($event)"></p-button>
   </div>
 </p-toolbar>
+<p-toast></p-toast>
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '200px'}">
+  <ng-template pTemplate>
+    <h3>您好，使用者</h3>
+    <a class="title" routerLink="/login">登出</a>
+  </ng-template>
+</p-overlayPanel>

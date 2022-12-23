@@ -41,6 +41,7 @@ import { ChipsModule } from 'primeng/chips';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageService } from 'primeng/api';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 @NgModule({
   providers: [MessageService],
@@ -88,7 +89,8 @@ import { MessageService } from 'primeng/api';
     TooltipModule,
     ChipsModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    OverlayPanelModule
   ]
 })
 export class PrimengModule { }

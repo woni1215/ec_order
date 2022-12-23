@@ -1,1 +1,27 @@
-<p>order works!</p>
+<p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
+  <div class="col-12" style="display:inline">
+    <label for="訂單列表">訂單列表</label>
+    <span style="margin-left: 70%;"></span>
+    <p-button label="新增" (Click)="new()"></p-button>
+  </div>
+<hr>
+<p-table [value]="cle" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+responsiveLayout="scroll" [rowsPerPageOptions]="[5,10,15]">
+  <ng-template pTemplate="header">
+    <tr>
+        <th>商品名稱</th>
+        <th>下單時間</th>
+        <th>Category</th>
+        <th>Quantity</th>
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-element>
+  <tr>
+      <td>{{element.code}}</td>
+      <td>{{element.name}}</td>
+      <td>{{element.category}}</td>
+      <td>{{element.quantity}}</td>
+  </tr>
+</ng-template>
+</p-table>
+</p-card>
