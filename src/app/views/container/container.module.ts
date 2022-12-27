@@ -5,6 +5,8 @@ import { ContainerComponent } from './container.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LayoutModule } from 'src/app/components/layout.module';
 import { OrderComponent } from '../features/order/order.component';
+import { OrderNewComponent } from '../features/order/order-new/order-new.component';
+import { OrderEditComponent } from '../features/order/order-edit/order-edit.component';
 import { BillComponent } from '../features/bill/bill.component';
 import { BillDetailComponent } from '../features/bill/bill-detail/bill-detail.component';
 import { CompanyComponent } from '../features/company/company.component';
@@ -15,6 +17,8 @@ import { CompanyEditComponent } from '../features/company/company-edit/company-e
   declarations: [
     ContainerComponent,
     OrderComponent,
+    OrderNewComponent,
+    OrderEditComponent,
     BillComponent,
     BillDetailComponent,
     CompanyComponent,
