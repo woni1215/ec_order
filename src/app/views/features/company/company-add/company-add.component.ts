@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { HttpApiService } from 'src/app/api/http-api.service';
 
 @Component({
   selector: 'app-company-add',
@@ -19,8 +20,11 @@ export class CompanyAddComponent {
   }]
 
   FormGroup: FormGroup;
+  POSTFactory: HttpApiService[] = [];
+
   constructor(
     private fb: FormBuilder,
+    private HttpApi: HttpApiService,
   ) {
     this.FormGroup = this.fb.group({
       f_id: [''],
@@ -45,6 +49,26 @@ export class CompanyAddComponent {
     })
   }
 
+  // 新增廠商
+  postFactoryRequest(): void {
+    let body = {
+      name: this.data.name,
+      tel: this.data.tel,
+      address: this.data.address,
+      liaison: this.data.liaison,
+      mail: this.data.mail,
+      enable: Boolean(this.data.enable),
+    }
+    console.log(body)
+    this.HttpApi.postFactoryRequest(body)
+      .subscribe(res => {
+        this.POSTFactory = [res]
+        console.log(res.body)
+        window.location.assign('main/company/edit-company/' + res.body);
+      })
+  }
+
+  // 取消並返回
   cancel() {
     window.location.assign('main/company');
   }

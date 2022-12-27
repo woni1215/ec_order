@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpApiService } from 'src/app/api/http-api.service';
 
 @Component({
   selector: 'app-company',
@@ -16,12 +17,30 @@ export class CompanyComponent {
       enable: '未啟用'
     }
   ]
-  constructor() { }
-  ngOnInit(): void { }
+  GETAllFactory: HttpApiService[] = [];
+  constructor(
+    private HttpApi: HttpApiService,
+  ) { }
+
+  ngOnInit(): void {
+    this.getAllFactoryRequest();
+  }
+
+  // 取得所有廠商資料
+  getAllFactoryRequest() {
+    this.HttpApi.getAllFactoryRequest(1).subscribe(res => {
+      this.GETAllFactory = res.body
+      console.log(res.body)
+    })
+  }
+
+  // 新增廠商
   addItem() {
     window.location.assign('main/company/add-company');
   }
+
+  // 編輯廠商
   editItem(f_id: any) {
-    window.location.assign('main/company/edit-company');
+    window.location.assign('main/company/edit-company/' + f_id);
   }
 }
