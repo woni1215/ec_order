@@ -1,0 +1,78 @@
+<div class="container">
+  <p-card [style]="{'margin-top': '2%'}">
+    <div class="row">
+      <div class="row">
+        <div class="col">
+          <h2>編輯廠商</h2>
+        </div>
+        <div class="spacer"></div>
+        <div class="col">
+          <div class="input-group">
+            <h5>啟用：</h5>
+            <p-inputSwitch [(ngModel)]="data.enable"></p-inputSwitch>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6 mb-20">
+          <div class="input-group">
+            <div class="col-2 mt-10">
+              廠商名稱：
+            </div>
+            <div class="col-10">
+              <input class="w-100p" type="username" placeholder="請輸入廠商名稱" pInputText />
+            </div>
+          </div>
+        </div>
+        <div class="col-6 mb-20">
+          <div class="input-group">
+            <div class="col-2 mt-10">
+              電話：
+            </div>
+            <div class="col-10">
+              <input class="w-100p" type="tel" placeholder="請輸入廠商電話" pInputText />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-20">
+          <div class="input-group">
+            <div class="col-1 mt-10">
+              地址：
+            </div>
+            <div class="col-11">
+              <input class="w-100p" type="address" placeholder="請輸入廠商地址" pInputText />
+            </div>
+          </div>
+        </div>
+        <div class="col-6 mb-20">
+          <div class="input-group">
+            <div class="col-2 mt-10">
+              聯絡人：
+            </div>
+            <div class="col-10">
+              <input class="w-100p" type="username" placeholder="請輸入廠商聯絡人" pInputText />
+            </div>
+          </div>
+        </div>
+        <div class="col-6 mb-20">
+          <div class="input-group">
+            <div class="col-2 mt-10">
+              電子郵件：
+            </div>
+            <div class="col-10">
+              <input class="w-100p" type="mail" placeholder="請輸入廠商電子郵件" pInputText />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col">
+          <button class="mr-10" pButton pRipple label="修改"></button>
+          <button pButton pRipple label="取消" class="p-button-outlined p-button-secondary" (click)="cancel()"></button>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>
+
