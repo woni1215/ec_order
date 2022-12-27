@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./bill.component.scss']
 })
 export class BillComponent {
-
+  example = [
+    {
+      name: 'A服飾',
+      quantity: 50,
+      status: '已送出',
+    }
+  ]
+  export(){
+    window.location.assign('main/bill/bill-detail')
+  }
 }
