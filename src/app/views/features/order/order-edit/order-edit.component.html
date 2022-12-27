@@ -1,1 +1,70 @@
-<p>order-edit works!</p>
+<p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
+  <div class="col-12" style="display:inline">
+    <label for="編輯訂單">編輯訂單</label>
+    <span style="margin-left: 70%;"></span>
+  </div>
+<hr>
+<div class="row">
+  <div class="col-6">
+    廠商A
+  </div>
+
+</div>
+<div class="row" style="margin-top: 30px">
+    <div class="col-2">
+      選擇商品 ：
+    </div>
+    <div class="col-2" style="margin-left: -50px;">
+    商品A
+    </div>
+    <div class="col-2">
+      選擇數量 ：
+    </div>
+    <div class="col-4" style="margin-left: -50px;">
+      <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
+      </p-inputNumber>
+    </div>
+    <div class="col-2">
+      單價：$75
+    </div>
+</div>
+<div class="row" style="margin-top: 20px">
+  <div class="col-2">
+    選擇商品 ：
+  </div>
+  <div class="col-2" style="margin-left: -50px;">
+  商品B
+  </div>
+  <div class="col-2">
+    選擇數量 ：
+  </div>
+  <div class="col-4" style="margin-left: -50px;">
+    <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
+    </p-inputNumber>
+  </div>
+  <div class="col-2">
+    單價：$60
+  </div>
+</div>
+<div class="row" style="margin-top: 20px">
+  <div class="col-2">
+    選擇商品 ：
+  </div>
+  <div class="col-2" style="margin-left: -50px;">
+  商品C
+  </div>
+  <div class="col-2">
+    選擇數量 ：
+  </div>
+  <div class="col-4" style="margin-left: -50px;">
+    <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
+    </p-inputNumber>
+  </div>
+  <div class="col-2">
+    單價：$85
+  </div>
+  <div style="margin-left: 70%;">
+    金額總計："     "<button class="mr-10" pButton pRipple label="確認更改" (click)="showSuccess()"></button>
+  </div>
+</div>
+</p-card>
