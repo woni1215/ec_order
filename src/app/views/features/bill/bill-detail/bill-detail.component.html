@@ -1,0 +1,54 @@
+<div class="container">
+  <p-card  [style]="{'margin-top': '2%'}">
+    <!-- <form [formGroup]="FormGroup"> -->
+    <div class="row">
+      <div class="col">
+        <h2>{{data.name}}廠商</h2>
+      </div>
+      <div class="spacer"></div>
+      <hr>
+      <p-table [value]="example" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        [rowsPerPageOptions]="[5,10,15]">
+        <ng-template pTemplate="header">
+          <tr style="font-size:small">
+            <th>產品名稱</th>
+            <th>數量</th>
+            <th>單位</th>
+            <th>單價</th>
+            <th>總價</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-element>
+          <tr style="font-size:small">
+            <td>{{element.name}}</td>
+            <td>{{element.quantity}}</td>
+            <td>{{element.unit}}</td>
+            <td>{{element.price}}</td>
+            <td>{{element.total_price}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <hr>
+      <div class="col">
+        <h5>{{data.name}}廠商 訂單共{{data.account}}筆 總金額{{data.total_price}}元</h5>
+      </div>
+      <div class="spacer"></div>
+      <div class="col">
+        <button class="mr-10" pButton pRipple label="金額確認" (click)="showDialog()"></button>
+        <button pButton pRipple label="取消" class="p-button-outlined p-button-secondary" (click)="cancel()"></button>
+      </div>
+    </div>
+    <!-- </form> -->
+  </p-card>
+</div>
+<p-dialog header="匯款完成結算" [(visible)]="display" [style]="{width: '35vw'}">
+  <div class="row">
+    <div class="col">
+      <h5>總金額{{data.total_price}}元</h5>
+    </div>
+    <div class="spacer"></div>
+    <div class="col">
+      <button class="mr-10" pButton pRipple label="匯款" (click)="remit()"></button>
+    </div>
+  </div>
+</p-dialog>
