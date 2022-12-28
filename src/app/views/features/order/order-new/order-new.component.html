@@ -3,68 +3,255 @@
     <label for="新增訂單">新增訂單</label>
     <span style="margin-left: 70%;"></span>
   </div>
-<hr>
-<div class="row">
-  <div class="col-6">
-    選擇廠商 ： <p-dropdown [options]="op" [editable]="true" optionLabel="name" placeholder="選擇廠商"></p-dropdown>
-  </div>
-
-</div>
-<div class="row" style="margin-top: 30px">
-    <div class="col-2">
-      選擇商品 ：
+  <hr>
+  <!-- <div>
+    <p-calendar placeholder="輸入顧客需求日" [showIcon]="true" inputId="icon"></p-calendar>
+  </div> -->
+  <form [formGroup]="FormGroup">
+    <div>
+      <div class="row">
+        <div class="col-6">
+          選擇廠商 ： <p-dropdown [options]="op" [editable]="true" optionLabel="factory" placeholder="選擇廠商"
+            [style]="{'width':'100%'}"
+            [ngClass]="{'ng-dirty': FormGroup.controls['factory'].hasError && FormGroup.controls['factory'].touched}"
+            (onChange)="onChange1($event)" formControlName="factory" [required]="true"
+            [(ngModel)]="this.orderdata.factory" ngDefaultControl></p-dropdown>
+        </div>
+        <div class="col-6">
+          選擇廠商 ： <p-dropdown [options]="op2" [editable]="true" optionLabel="product" placeholder="選擇產品"
+            [style]="{'width':'100%'}"
+            [ngClass]="{'ng-dirty': FormGroup.controls['product'].hasError && FormGroup.controls['product'].touched}"
+            (onChange)="onChange1($event)" formControlName="product" [required]="true"
+            [(ngModel)]="this.orderdata.product" ngDefaultControl></p-dropdown>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-6">
+          客戶需求日 ：<p-calendar [showIcon]="true" inputId="calendar" [appendTo]="'body'" formControlName="demand" dateFormat="yy/mm/dd"
+          [ngClass]="{'ng-dirty': FormGroup.controls['demand'].hasError && FormGroup.controls['demand'].touched}" [required]="true"
+          placeholder="客戶需求日" [style]="{'width':'100%'}" [(ngModel)]="this.orderdata.demand" ngDefaultControl>
+        </p-calendar>
+        </div>
+        <div class="col-6">
+          選擇數量 ： <p-inputNumber [inputStyle]="{width: '50%', height: '90%'}" mode="decimal" [showButtons]="true"
+            inputId="minmax-buttons" [min]="0" [max]="100" formControlName="quantity"  [required]="true"
+            [(ngModel)]="this.orderdata.quantity" ngDefaultControl>
+          </p-inputNumber>
+          <span style="margin-left: 20px;">
+            <button pButton pRipple type="button" icon="pi pi-plus" (click)="postProductRequest()"></button>
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="col-2" style="margin-left: -50px;">
-    商品A
+  </form>
+  <!-- <div class="row">
+    <div class="col-4" style="margin-top: 20px">
+      <p-card>
+        <h5>廠商A</h5>
+        <div class="col-12">
+          <div class="col-4" style="margin-left:5%;display:inline">
+            商品
+          </div>
+          <div class="col-4" style="margin-left:17%;display:inline">
+            單價
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            選擇數量
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            A
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $75
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            B
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $65
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            C
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $80
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div style="margin-top: 10px;margin-left: 80%;">
+          <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"></button>
+        </div>
+      </p-card>
     </div>
-    <div class="col-2">
-      選擇數量 ：
+    <div class="col-4" style="margin-top: 20px">
+      <p-card>
+        <h5>廠商B</h5>
+        <div class="col-12">
+          <div class="col-4" style="margin-left:5%;display:inline">
+            商品
+          </div>
+          <div class="col-4" style="margin-left:17%;display:inline">
+            單價
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            選擇數量
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            A
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $70
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            B
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $65
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            C
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $85
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div style="margin-top: 10px;margin-left: 80%;">
+          <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"></button>
+        </div>
+      </p-card>
     </div>
-    <div class="col-4" style="margin-left: -50px;">
-      <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
-      </p-inputNumber>
+    <div class="col-4" style="margin-top: 20px">
+      <p-card>
+        <h5>廠商C</h5>
+        <div class="col-12">
+          <div class="col-4" style="margin-left:5%;display:inline">
+            商品
+          </div>
+          <div class="col-4" style="margin-left:17%;display:inline">
+            單價
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            選擇數量
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            A
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $75
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            B
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $60
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+          <div class="col-4" style="margin-left:10%;display:inline">
+            C
+          </div>
+          <div class="col-4" style="margin-left:20%;display:inline">
+            $85
+          </div>
+          <div class="col-4" style="margin-left:15%;display:inline">
+            <p-inputNumber [inputStyle]="{width: '50px'}" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+              [min]="0" [max]="100">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div style="margin-top: 10px;margin-left: 80%;">
+          <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"></button>
+        </div>
+      </p-card>
     </div>
-    <div class="col-2">
-      單價：$75
-    </div>
-</div>
-<div class="row" style="margin-top: 20px">
-  <div class="col-2">
-    選擇商品 ：
+  </div> -->
+</p-card>
+<p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
+  <div class="col-12" style="display:inline">
+    <label for="訂單列表">待送出訂單列表</label>
+    <span style="margin-left: 70%;"></span>
   </div>
-  <div class="col-2" style="margin-left: -50px;">
-  商品B
+  <hr>
+  <p-table [value]="GETOneOrder" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+    [rowsPerPageOptions]="[5,10,15]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>廠商</th>
+        <th>商品</th>
+        <th>單價</th>
+        <th>單位</th>
+        <th>數量</th>
+        <th>刪除</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element>
+      <tr>
+        <td>{{element.factory}}</td>
+        <td>{{element.product}}</td>
+        <td>{{element.price}}</td>
+        <td>{{element.unit}}</td>
+        <td>{{element.quantity}}</td>
+        <td><button styleClass="p-button-sm" pButton pRipple type="button" icon="pi pi-trash"
+            class="p-button-rounded p-button-secondary p-button-outlined"></button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <div style="margin-top: 10px;margin-left: 80%;">
+    <button pButton pRipple type="button" label="確認新增訂單" (click)="postProductRequest()"></button>
   </div>
-  <div class="col-2">
-    選擇數量 ：
-  </div>
-  <div class="col-4" style="margin-left: -50px;">
-    <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
-    </p-inputNumber>
-  </div>
-  <div class="col-2">
-    單價：$60
-  </div>
-</div>
-<div class="row" style="margin-top: 20px">
-  <div class="col-2">
-    選擇商品 ：
-  </div>
-  <div class="col-2" style="margin-left: -50px;">
-  商品C
-  </div>
-  <div class="col-2">
-    選擇數量 ：
-  </div>
-  <div class="col-4" style="margin-left: -50px;">
-    <p-inputNumber inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="100">
-    </p-inputNumber>
-  </div>
-  <div class="col-2">
-    單價：$85
-  </div>
-  <div style="margin-left: 70%;">
-    金額總計："     "<button class="mr-10" pButton pRipple label="確認新增" (click)="showSuccess()"></button>
-  </div>
-</div>
 </p-card>

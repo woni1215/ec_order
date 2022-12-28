@@ -5,14 +5,14 @@
     <button pButton pRipple type="button" label="新增" (click)="neworder()"></button>
   </div>
 <hr>
-<p-table [value]="cle" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+<p-table [value]="GETAllOrder" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
 responsiveLayout="scroll" [rowsPerPageOptions]="[5,10,15]">
   <ng-template pTemplate="header">
     <tr>
         <th>訂單建立時間</th>
         <th>廠商</th>
         <th>訂單狀態</th>
-        <th>Quantity</th>
+        <th>客戶需求日</th>
         <th>編輯</th>
     </tr>
 </ng-template>
@@ -21,7 +21,7 @@ responsiveLayout="scroll" [rowsPerPageOptions]="[5,10,15]">
       <td>{{element.code}}</td>
       <td>{{element.factory}}</td>
       <td>{{element.status}}</td>
-      <td>{{element.quantity}}</td>
+      <td>{{element.demand}}</td>
       <td><button styleClass="p-button-sm" pButton pRipple type="button" icon="pi pi-pencil"
         class="p-button-rounded p-button-secondary p-button-outlined" (click)="editorder()"></button></td>
   </tr>

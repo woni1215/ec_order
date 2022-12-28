@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'order', component: OrderComponent },
       { path: 'order/order-new', component: OrderNewComponent },
       { path: 'order/order-edit', component: OrderEditComponent },
+      //{ path: 'order/order-edit/:id', component: OrderEditComponent },
       { path: 'bill', component: BillComponent },
       { path: 'bill/bill-detail', component: BillDetailComponent },
       // { path: 'bill/bill-detail/:id', component: BillDetailComponent },
