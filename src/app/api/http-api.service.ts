@@ -9,7 +9,7 @@ import { catchError, retry, map, tap } from 'rxjs/operators';// RxJS 可觀察�
 })
 export class HttpApiService {
 
-  private BaseUrl: string = 'http://localhost:8080/sys/v1.0';
+  private BaseUrl: string = 'http://localhost:8081/sys/v1.0';
 
   constructor(
     private http: HttpClient,
@@ -42,8 +42,13 @@ export class HttpApiService {
   }
   //-------------------------產品管理---------------------------------------------------------------------------
   //取得所有產品資料
-  getAllProductRequest(page: number): Observable<any> {
-    return this.http.get(this.BaseUrl + '/Product?page=' + page + '&limit=20');
+  // getAllProductRequest(page: number): Observable<any> {
+  //   return this.http.get(this.BaseUrl + '/GetAllFactory?page=' + page + '&limit=20');
+  // }
+  //取得單筆產品資料
+  getAllProductRequest(id: any): Observable<any> {
+    const url = `${this.BaseUrl}/Factory/GetByFIDFactory/${id}`;
+    return this.http.get(url);
   }
   //取得單筆產品資料
   getOneProductRequest(id: any): Observable<any> {
