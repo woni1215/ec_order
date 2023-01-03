@@ -8,23 +8,23 @@
       </div>
       <hr>
       <!--表格-->
-      <p-table [value]="example" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+      <p-table [value]="GETAllOrder" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
         [rowsPerPageOptions]="[5,10,15]">
         <ng-template pTemplate="header">
           <tr style="font-size:small">
             <th>廠商名稱</th>
             <th>訂單數量</th>
             <th>訂單狀態</th>
-            <th>生成報表</th>
+            <th>訂單明細</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-element>
-          <tr style="font-size:small">
+          <tr style="font-size:small"  *ngIf="element.status == '已送出'">
             <td>{{element.name}}</td>
             <td>{{element.quantity}}</td>
             <td>{{element.status}}</td>
             <td><button styleClass="p-button-sm" pButton pRipple type="button" icon="pi pi-list"
-              class="p-button-rounded p-button-secondary p-button-outlined" (click)="export()"></button>
+              class="p-button-rounded p-button-secondary p-button-outlined" (click)="detail(element.o_id)"></button>
           </td>
           </tr>
         </ng-template>
