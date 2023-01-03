@@ -42,6 +42,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageService } from 'primeng/api';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {StepsModule} from 'primeng/steps';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   providers: [MessageService],
@@ -90,7 +92,9 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     ChipsModule,
     ToolbarModule,
     SplitButtonModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    StepsModule,
+    RadioButtonModule
   ]
 })
 export class PrimengModule { }

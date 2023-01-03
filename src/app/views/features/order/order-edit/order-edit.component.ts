@@ -33,15 +33,6 @@ export class OrderEditComponent {
     demand: [''],
     quantity: [''],
     price: [''],
-    // aa_q: [''],
-    // ab_q: [''],
-    // ac_q: [''],
-    // ba_q: [''],
-    // bb_q: [''],
-    // bc_q: [''],
-    // ca_q: [''],
-    // cb_q: [''],
-    // cc_q: [''],
   }]
   FormGroup: FormGroup;
   constructor(private HttpApi: HttpApiService, private messageService: MessageService, private fb: FormBuilder, private route: ActivatedRoute) {
@@ -73,15 +64,6 @@ export class OrderEditComponent {
       demand: [''],
       quantity: [''],
       price: [''],
-      // aa_q: [''],
-      // ab_q: [''],
-      // ac_q: [''],
-      // ba_q: [''],
-      // bb_q: [''],
-      // bc_q: [''],
-      // ca_q: [''],
-      // cb_q: [''],
-      // cc_q: [''],
     });
   }
   ngOnInit(): void {
@@ -91,15 +73,6 @@ export class OrderEditComponent {
       demand: new FormControl(),
       quantity: new FormControl(),
       price: new FormControl(),
-      // aa_q: new FormControl(),
-      // ab_q: new FormControl(),
-      // ac_q: new FormControl(),
-      // ba_q: new FormControl(),
-      // bb_q: new FormControl(),
-      // bc_q: new FormControl(),
-      // ca_q: new FormControl(),
-      // cb_q: new FormControl(),
-      // cc_q: new FormControl(),
     });
     this.o_id = this.route.snapshot.paramMap.get('o_id')
     console.log("取到的o_id: " + this.o_id)
@@ -118,19 +91,11 @@ export class OrderEditComponent {
   postProductRequest(): void {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: '新增成功' });
     let body = {
+      order_id: this.o_id,
       factory: this.orderdata.factory,
       product: this.orderdata.product,
       demand: this.localToUtc(this.orderdata.demand),
       quantity: this.orderdata.quantity,
-      // aa_q: this.orderdata.aa_q,
-      // ab_q: this.orderdata.ab_q,
-      // ac_q: this.orderdata.ac_q,
-      // ba_q: this.orderdata.ac_q,
-      // bb_q: this.orderdata.bb_q,
-      // bc_q: this.orderdata.bc_q,
-      // ca_q: this.orderdata.ca_q,
-      // cb_q: this.orderdata.cb_q,
-      // cc_q: this.orderdata.cc_q,
     }
     this.HttpApi.postProductRequest(body)
       .subscribe(Request => {
@@ -151,15 +116,6 @@ export class OrderEditComponent {
       product: this.orderdata.product,
       demand: this.localToUtc(this.orderdata.demand),
       quantity: this.orderdata.quantity,
-      // aa_q: this.orderdata.aa_q,
-      // ab_q: this.orderdata.ab_q,
-      // ac_q: this.orderdata.ac_q,
-      // ba_q: this.orderdata.ac_q,
-      // bb_q: this.orderdata.bb_q,
-      // bc_q: this.orderdata.bc_q,
-      // ca_q: this.orderdata.ca_q,
-      // cb_q: this.orderdata.cb_q,
-      // cc_q: this.orderdata.cc_q,
     }
     this.HttpApi.patchFactoryRequest(o_id, body)
       .subscribe(Request => {

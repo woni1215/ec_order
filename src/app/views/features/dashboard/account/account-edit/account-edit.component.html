@@ -1,25 +1,25 @@
 <form [formGroup]="FormGroup">
   <div class="text-center">
     <p-card [style]="{'width': '70%', 'margin-top': '4%' , 'margin-left': '15%'}">
-      <h1 style="text-align: center;">註冊帳號</h1>
+      <h1 style="text-align: center;">編輯帳號</h1>
       <div class="field">
         <label for="username">姓名：</label>
         <input id="username" type="string" placeholder="請輸入您的姓名"
           [ngClass]="{'ng-dirty': FormGroup.controls['name'].hasError && FormGroup.controls['name'].touched}"
-          formControlName="name" [required]="true" [(ngModel)]="this.signupdata.name" pInputText ngDefaultControl />
+          formControlName="name" [required]="true" [(ngModel)]="this.accountdata.name" pInputText ngDefaultControl />
         <!-- <small id="username1-help" class="block">Enter your username to reset your password.</small> -->
       </div>
       <div class="field" style="margin-top: 20px;">
         <label for="useraccount">帳號：</label>
         <input id="useraccount" type="useraccount" placeholder="請輸入您的帳號"
           [ngClass]="{'ng-dirty': FormGroup.controls['acccount'].hasError && FormGroup.controls['acccount'].touched}"
-          formControlName="acccount" [required]="true" [(ngModel)]="this.signupdata.acccount" pInputText
+          formControlName="acccount" [required]="true" [(ngModel)]="this.accountdata.acccount" pInputText
           ngDefaultControl />
       </div>
       <div class="field" style="margin-top: 20px;">
         <label for="password">密碼：</label>
         <input type="password" placeholder="請輸入您的密碼"  [ngClass]="{'ng-dirty': FormGroup.controls['pwd'].hasError && FormGroup.controls['pwd'].touched}"
-        formControlName="pwd" [required]="true" [(ngModel)]="this.signupdata.pwd"
+        formControlName="pwd" [required]="true" [(ngModel)]="this.accountdata.pwd"
         ngDefaultControl  pPassword />
         <!-- <small *ngIf="(this.signupdata.pwd.null)">請輸入您的密碼</small> -->
       </div>
@@ -29,12 +29,21 @@
         <!-- <small id="username1-help" class="block">Enter your username to reset your password.</small> -->
       </div>
       <div class="field" style="margin-top: 20px;">
+        <label for="string">更改使用者權限：</label>
+        <div *ngFor="let option of optiondialog" style="display: inline;">
+          <p-radioButton [inputId]="option.key" [name]="option" [value]="option" formControlName="role_id"
+            [(ngModel)]="this.accountdata.role_id">
+          </p-radioButton><label [for]="option.key">{{option.name}}</label>
+        </div>
+      </div>
+      <div class="field" style="margin-top: 20px;">
         <button type="button" pButton pRipple (click)="showError()" label="取消註冊" class="p-button-danger mb-2"></button>
         <span style="margin-left: 10px;"></span>
-        <button type="button" pButton pRipple (click)="showSuccess()" label="完成註冊"
+        <button type="button" pButton pRipple (click)="showSuccess()" label="確認更新"
           class="p-button-success mb-2"></button>
       </div>
     </p-card>
   </div>
 </form>
 <p-toast></p-toast>
+
