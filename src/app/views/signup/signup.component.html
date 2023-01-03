@@ -29,14 +29,6 @@
         <!-- <small id="username1-help" class="block">Enter your username to reset your password.</small> -->
       </div>
       <div class="field" style="margin-top: 20px;">
-        <label for="string">更改使用者權限：</label>
-        <div *ngFor="let option of optiondialog" style="display: inline;">
-          <p-radioButton [inputId]="option.key" [name]="option" [value]="option" formControlName="role_id"
-            [(ngModel)]="this.signupdata.role_id">
-          </p-radioButton><label [for]="option.key">{{option.name}}</label>
-        </div>
-      </div>
-      <div class="field" style="margin-top: 20px;">
         <button type="button" pButton pRipple (click)="showError()" label="取消註冊" class="p-button-danger mb-2"></button>
         <span style="margin-left: 10px;"></span>
         <button type="button" pButton pRipple (click)="showSuccess()" label="完成註冊"
