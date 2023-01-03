@@ -24,15 +24,15 @@ export class CompanyEditComponent {
     name: [''],
     price: [''],
     unit: [''],
-    discontinued: [''],
+    discountinued: [''],
   }]
 
   f_FormGroup: FormGroup;
   p_FormGroup: FormGroup;
-  PATCHFactory: HttpApiService[] = [];
-  GETAllProduct: HttpApiService[] = [];
-  POSTProduct: HttpApiService[] = [];
-  PATCHProduct: HttpApiService[] = [];
+  PATCHFactory: HttpApiService[];
+  GETAllProduct: HttpApiService[];
+  POSTProduct: HttpApiService[];
+  PATCHProduct: HttpApiService[];
 
   constructor(
     private route: ActivatedRoute,
@@ -52,14 +52,16 @@ export class CompanyEditComponent {
       name: [''],
       price: [''],
       unit: [''],
-      discontinued: [''],
+      discountinued: [''],
     });
   }
 
   f_id: any;
   ngOnInit(): void {
-    this.f_id = this.route.snapshot.paramMap.get('f_id');
+    this.f_id = this.route.snapshot.paramMap.get('id');
+    console.log("f_id: " + this.f_id)
     this.getOneFactoryRequest(this.f_id);
+    this.getAllProductRequest(this.f_id);
     this.f_FormGroup = this.fb.group({
       f_id: new FormControl(),
       name: new FormControl(),
@@ -73,7 +75,7 @@ export class CompanyEditComponent {
       name: new FormControl(),
       price: new FormControl(),
       unit: new FormControl(),
-      discontinued: new FormControl(),
+      discountinued: new FormControl(),
     });
   }
 
@@ -83,14 +85,14 @@ export class CompanyEditComponent {
       this.p_data.name = res.body.name
       this.p_data.price = res.body.price
       this.p_data.unit = res.body.unit
-      this.p_data.discontinued = res.body.discontinued
+      this.p_data.discountinued = res.body.discountinued
     })
   }
 
   // 刪除產品
-  p_id: any;
-  deleteProduct(p_id: any) {
+  deleteProduct() {
     this.displayEdit = false;
+    let id = this.product_id
     Swal.fire({
       title: '刪除產品?',
       text: "刪除後將不可復原!",
@@ -103,8 +105,9 @@ export class CompanyEditComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         // 刪除廠商
-        this.HttpApi.deleteProductRequest(p_id).subscribe(res => {
+        this.HttpApi.deleteProductRequest(id).subscribe(res => {
           console.log(res)
+          this.getAllProductRequest(this.f_id)
         })
         Swal.fire(
           '已刪除!',
@@ -112,24 +115,25 @@ export class CompanyEditComponent {
           'success'
         )
       }
-      this.displayEdit = true;
+      this.displayEdit = false;
     })
   }
 
   // 編輯產品
-  patchProductRequest(p_id: any) {
-    let id = p_id
+  patchProductRequest() {
+    let id = this.product_id
     console.log(id)
     let body = {
       name: this.p_data.name,
       price: this.p_data.price,
       unit: this.p_data.unit,
-      discontinued: Boolean(this.p_data.discontinued),
+      discountinued: Boolean(this.p_data.discountinued),
     }
     this.HttpApi.patchProductRequest(id, body)
       .subscribe(res => {
         this.PATCHProduct = [res]
         console.log(this.PATCHProduct)
+        this.getAllProductRequest(this.f_id)
       })
   }
 
@@ -139,14 +143,25 @@ export class CompanyEditComponent {
       name: this.p_data.name,
       price: this.p_data.price,
       unit: this.p_data.unit,
-      discontinued: Boolean(this.p_data.discontinued),
+      discountinued: Boolean(this.p_data.discountinued),
+      factory_id: this.f_id,
+      creater: '18b3c54e-8e43-4168-8fb8-c76b02776ecf',
     }
     console.log(body)
     this.HttpApi.postProductRequest(body)
       .subscribe(res => {
         this.POSTProduct = [res]
-        console.log(res.body)
+        console.log(this.POSTProduct)
+        this.getAllProductRequest(this.f_id)
       })
+  }
+
+  // 取得產品列表
+  getAllProductRequest(f_id: any) {
+    this.HttpApi.getAllProductRequest(f_id).subscribe(res => {
+      this.GETAllProduct = res.body.Product
+      console.log(this.GETAllProduct)
+    })
   }
 
   // 開啟新增產品dialog
@@ -156,8 +171,11 @@ export class CompanyEditComponent {
   }
 
   // 開啟編輯產品dialog
+  product_id: any;
   displayEdit: boolean = false;
   showEditDialog(p_id: any) {
+    console.log('p_id: ' + p_id)
+    this.product_id = p_id
     this.getOneProductRequest(p_id);
     this.displayEdit = true;
   }
@@ -172,7 +190,7 @@ export class CompanyEditComponent {
       address: this.f_data.address,
       liaison: this.f_data.liaison,
       mail: this.f_data.mail,
-      enable: this.f_data.enable,
+      enable: Boolean(this.f_data.enable),
     }
     this.HttpApi.patchFactoryRequest(id, body)
       .subscribe(res => {
@@ -215,6 +233,7 @@ export class CompanyEditComponent {
       this.f_data.liaison = res.body.liaison
       this.f_data.mail = res.body.mail
       this.f_data.enable = res.body.enable
+
     })
   }
 

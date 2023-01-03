@@ -20,7 +20,7 @@ export class CompanyAddComponent {
   }]
 
   FormGroup: FormGroup;
-  POSTFactory: HttpApiService[] = [];
+  POSTFactory: HttpApiService[];
 
   constructor(
     private fb: FormBuilder,
@@ -58,6 +58,7 @@ export class CompanyAddComponent {
       liaison: this.data.liaison,
       mail: this.data.mail,
       enable: Boolean(this.data.enable),
+      creater: "18b3c54e-8e43-4168-8fb8-c76b02776ecf",
     }
     console.log(body)
     this.HttpApi.postFactoryRequest(body)

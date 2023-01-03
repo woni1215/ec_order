@@ -17,7 +17,7 @@ export class CompanyComponent {
       enable: '未啟用'
     }
   ]
-  GETAllFactory: HttpApiService[] = [];
+  GETAllFactory: HttpApiService[];
   constructor(
     private HttpApi: HttpApiService,
   ) { }
@@ -29,7 +29,7 @@ export class CompanyComponent {
   // 取得所有廠商資料
   getAllFactoryRequest() {
     this.HttpApi.getAllFactoryRequest(1).subscribe(res => {
-      this.GETAllFactory = res.body
+      this.GETAllFactory = res.body.factorys
       console.log(res.body)
     })
   }

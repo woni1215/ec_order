@@ -10,7 +10,7 @@
           <div class="col">
             <div class="input-group">
               <h5>啟用：</h5>
-              <p-inputSwitch [(ngModel)]="f_data.enable" ngDefaultControl></p-inputSwitch>
+              <p-inputSwitch formControlName="enable" [(ngModel)]="f_data.enable" ngDefaultControl></p-inputSwitch>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
                 廠商名稱：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="username" placeholder="請輸入廠商名稱" pInputText [(ngModel)]="f_data.name"
+                <input class="w-100p" type="username" placeholder="請輸入廠商名稱" pInputText formControlName="name" [(ngModel)]="f_data.name"
                   ngDefaultControl />
               </div>
             </div>
@@ -33,7 +33,7 @@
                 電話：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="tel" placeholder="請輸入廠商電話" pInputText [(ngModel)]="f_data.tel"
+                <input class="w-100p" type="tel" placeholder="請輸入廠商電話" pInputText formControlName="tel" [(ngModel)]="f_data.tel"
                   ngDefaultControl />
               </div>
             </div>
@@ -44,7 +44,7 @@
                 地址：
               </div>
               <div class="col-11">
-                <input class="w-100p" type="address" placeholder="請輸入廠商地址" pInputText [(ngModel)]="f_data.address"
+                <input class="w-100p" type="address" placeholder="請輸入廠商地址" pInputText formControlName="address" [(ngModel)]="f_data.address"
                   ngDefaultControl />
               </div>
             </div>
@@ -55,7 +55,7 @@
                 聯絡人：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="username" placeholder="請輸入廠商聯絡人" pInputText [(ngModel)]="f_data.liaison"
+                <input class="w-100p" type="username" placeholder="請輸入廠商聯絡人" pInputText formControlName="liaison" [(ngModel)]="f_data.liaison"
                   ngDefaultControl />
               </div>
             </div>
@@ -66,7 +66,7 @@
                 電子郵件：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="mail" placeholder="請輸入廠商電子郵件" pInputText [(ngModel)]="f_data.mail"
+                <input class="w-100p" type="mail" placeholder="請輸入廠商電子郵件" pInputText formControlName="mail" [(ngModel)]="f_data.mail"
                   ngDefaultControl />
               </div>
             </div>
@@ -194,7 +194,7 @@
           <td>{{element.name}}</td>
           <td>{{element.price}}</td>
           <td>{{element.unit}}</td>
-          <td>{{element.discontinued}}</td>
+          <td>{{element.discountinued}}</td>
           <td><button styleClass="p-button-sm" pButton pRipple type="button" icon="pi pi-pencil"
               class="p-button-rounded p-button-secondary p-button-outlined"
               (click)="showEditDialog(element.p_id)"></button>
@@ -214,7 +214,7 @@
             產品名稱：
           </div>
           <div class="col-8">
-            <input class="w-100p" type="username" placeholder="請輸入產品名稱" pInputText [(ngModel)]="p_data.name"
+            <input class="w-100p" type="username" placeholder="請輸入產品名稱" pInputText formControlName="name" [(ngModel)]="p_data.name"
               ngDefaultControl />
           </div>
         </div>
@@ -223,7 +223,7 @@
             價格：
           </div>
           <div class="col-8">
-            <input class="w-100p" placeholder="請輸入產品價格" pInputText [(ngModel)]="p_data.price" ngDefaultControl />
+            <input class="w-100p" placeholder="請輸入產品價格" pInputText formControlName="price" [(ngModel)]="p_data.price" ngDefaultControl />
           </div>
         </div>
         <div class="input-group">
@@ -231,7 +231,7 @@
             單位：
           </div>
           <div class="col-8">
-            <input class="w-100p" type="text" placeholder="請輸入產品單位" pInputText [(ngModel)]="p_data.unit"
+            <input class="w-100p" type="text" placeholder="請輸入產品單位" pInputText formControlName="unit" [(ngModel)]="p_data.unit"
               ngDefaultControl />
           </div>
         </div>
@@ -240,7 +240,7 @@
             <h6>是否供應：</h6>
           </div>
           <div class="col-8">
-            <p-inputSwitch [(ngModel)]="p_data.discontinued" ngDefaultControl></p-inputSwitch>
+            <p-inputSwitch formControlName="discountinued" [(ngModel)]="p_data.discountinued" ngDefaultControl></p-inputSwitch>
           </div>
         </div>
         <div class="input-group">
@@ -260,8 +260,8 @@
             產品名稱：
           </div>
           <div class="col-8">
-            <input class="w-100p" type="username" placeholder="請輸入產品名稱" pInputText [(ngModel)]="p_data.name"
-              ngDefaultControl />
+            <input class="w-100p" type="username" placeholder="請輸入產品名稱" pInputText  formControlName="name"  [(ngModel)]="p_data.name"
+              ngDefaultControl/>
           </div>
         </div>
         <div class="input-group">
@@ -269,7 +269,7 @@
             價格：
           </div>
           <div class="col-8">
-            <input class="w-100p" placeholder="請輸入產品價格" pInputText [(ngModel)]="p_data.price" ngDefaultControl />
+            <input class="w-100p" placeholder="請輸入產品價格" pInputText  formControlName="price" [(ngModel)]="p_data.price" ngDefaultControl />
           </div>
         </div>
         <div class="input-group">
@@ -277,7 +277,7 @@
             單位：
           </div>
           <div class="col-8">
-            <input class="w-100p" type="text" placeholder="請輸入產品單位" pInputText [(ngModel)]="p_data.unit"
+            <input class="w-100p" type="text" placeholder="請輸入產品單位" pInputText formControlName="unit" [(ngModel)]="p_data.unit"
               ngDefaultControl />
           </div>
         </div>
@@ -286,16 +286,16 @@
             <h6>是否供應：</h6>
           </div>
           <div class="col-6">
-            <p-inputSwitch [(ngModel)]="p_data.discontinued" ngDefaultControl></p-inputSwitch>
+            <p-inputSwitch formControlName="discountinued" [(ngModel)]="p_data.discountinued" ngDefaultControl></p-inputSwitch>
           </div>
           <div class="col-2">
             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text"
-              (click)="deleteProduct(p_id)"></button>
+              (click)="deleteProduct()"></button>
           </div>
         </div>
         <div class="input-group">
           <div class="col-12 text-center">
-            <button class="w-100" (click)="postProductRequest()" pButton pRipple label="編輯"></button>
+            <button class="w-100" (click)="patchProductRequest()" pButton pRipple label="編輯"></button>
           </div>
         </div>
       </div>

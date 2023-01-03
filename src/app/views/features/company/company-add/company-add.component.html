@@ -9,7 +9,7 @@
         <div class="col">
           <div class="input-group">
             <h5>啟用：</h5>
-            <p-inputSwitch [(ngModel)]="data.enable" ngDefaultControl></p-inputSwitch>
+            <p-inputSwitch formControlName="enable" [(ngModel)]="data.enable" ngDefaultControl></p-inputSwitch>
           </div>
         </div>
         <hr>
@@ -20,7 +20,7 @@
                 廠商名稱：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="username" placeholder="請輸入廠商名稱" pInputText [(ngModel)]="data.name" ngDefaultControl/>
+                <input class="w-100p" type="username" placeholder="請輸入廠商名稱" pInputText formControlName="name" [(ngModel)]="data.name" ngDefaultControl/>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
                 電話：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="tel" placeholder="請輸入廠商電話" pInputText [(ngModel)]="data.tel" ngDefaultControl/>
+                <input class="w-100p" type="tel" placeholder="請輸入廠商電話" pInputText formControlName="tel" [(ngModel)]="data.tel" ngDefaultControl/>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
                 地址：
               </div>
               <div class="col-11">
-                <input class="w-100p" type="address" placeholder="請輸入廠商地址" pInputText [(ngModel)]="data.address" ngDefaultControl/>
+                <input class="w-100p" type="address" placeholder="請輸入廠商地址" pInputText formControlName="address" [(ngModel)]="data.address" ngDefaultControl/>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 聯絡人：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="username" placeholder="請輸入廠商聯絡人" pInputText [(ngModel)]="data.liaison" ngDefaultControl/>
+                <input class="w-100p" type="username" placeholder="請輸入廠商聯絡人" pInputText formControlName="liaison" [(ngModel)]="data.liaison" ngDefaultControl/>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
                 電子郵件：
               </div>
               <div class="col-10">
-                <input class="w-100p" type="mail" placeholder="請輸入廠商電子郵件" pInputText [(ngModel)]="data.mail" ngDefaultControl/>
+                <input class="w-100p" type="mail" placeholder="請輸入廠商電子郵件" pInputText formControlName="mail" [(ngModel)]="data.mail" ngDefaultControl/>
               </div>
             </div>
           </div>
