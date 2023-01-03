@@ -3,6 +3,7 @@ import { ContainerComponent } from './container.component';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderComponent } from '../features/order/order.component';
 import { OrderNewComponent } from '../features/order/order-new/order-new.component';
+import { OrderNewStep2Component } from '../features/order/order-new/order-new-step2/order-new-step2.component';
 import { OrderEditComponent } from '../features/order/order-edit/order-edit.component';
 import { BillComponent } from '../features/bill/bill.component';
 import { BillDetailComponent } from '../features/bill/bill-detail/bill-detail.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'order', component: OrderComponent },
       { path: 'order/order-new', component: OrderNewComponent },
+      { path: 'order/order-new/step2', component: OrderNewStep2Component },
       { path: 'order/order-edit', component: OrderEditComponent },
       //{ path: 'order/order-edit/:id', component: OrderEditComponent },
       { path: 'bill', component: BillComponent },

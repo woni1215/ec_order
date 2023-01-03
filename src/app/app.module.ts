@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderNewStep2Component } from './views/features/order/order-new/order-new-step2/order-new-step2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    OrderNewStep2Component,
   ],
   imports: [
     BrowserModule,
