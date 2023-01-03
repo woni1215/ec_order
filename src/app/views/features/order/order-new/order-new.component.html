@@ -18,19 +18,24 @@
             [(ngModel)]="this.orderdata.factory" ngDefaultControl></p-dropdown>
         </div>
         <div class="col-6">
+          客戶需求日 ：<p-calendar [showIcon]="true" inputId="calendar" [appendTo]="'body'" formControlName="demand" dateFormat="yy/mm/dd"
+          [ngClass]="{'ng-dirty': FormGroup.controls['demand'].hasError && FormGroup.controls['demand'].touched}" [required]="true"
+          placeholder="客戶需求日" [style]="{'width':'100%'}" [(ngModel)]="this.orderdata.demand" ngDefaultControl>
+        </p-calendar>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-2" style="margin-left: 85%;">
+          <button pButton pRipple type="button" label="新增" routerLink="/main/order/order-new/step2"></button>
+        </div>
+      </div>
+      <!-- <div class="row" style="margin-top: 20px;">
+        <div class="col-6">
           選擇廠商 ： <p-dropdown [options]="op2" [editable]="true" optionLabel="product" placeholder="選擇產品"
             [style]="{'width':'100%'}"
             [ngClass]="{'ng-dirty': FormGroup.controls['product'].hasError && FormGroup.controls['product'].touched}"
             (onChange)="onChange1($event)" formControlName="product" [required]="true"
             [(ngModel)]="this.orderdata.product" ngDefaultControl></p-dropdown>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 20px;">
-        <div class="col-6">
-          客戶需求日 ：<p-calendar [showIcon]="true" inputId="calendar" [appendTo]="'body'" formControlName="demand" dateFormat="yy/mm/dd"
-          [ngClass]="{'ng-dirty': FormGroup.controls['demand'].hasError && FormGroup.controls['demand'].touched}" [required]="true"
-          placeholder="客戶需求日" [style]="{'width':'100%'}" [(ngModel)]="this.orderdata.demand" ngDefaultControl>
-        </p-calendar>
         </div>
         <div class="col-6">
           選擇數量 ： <p-inputNumber [inputStyle]="{width: '50%', height: '90%'}" mode="decimal" [showButtons]="true"
@@ -41,7 +46,7 @@
             <button pButton pRipple type="button" icon="pi pi-plus" (click)="postProductRequest()"></button>
           </span>
         </div>
-      </div>
+      </div> -->
     </div>
   </form>
   <!-- <div class="row">
@@ -221,7 +226,7 @@
     </div>
   </div> -->
 </p-card>
-<p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
+<!-- <p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
   <div class="col-12" style="display:inline">
     <label for="訂單列表">待送出訂單列表</label>
     <span style="margin-left: 70%;"></span>
@@ -254,4 +259,4 @@
   <div style="margin-top: 10px;margin-left: 80%;">
     <button pButton pRipple type="button" label="確認新增訂單" (click)="postProductRequest()"></button>
   </div>
-</p-card>
+</p-card> -->

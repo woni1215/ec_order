@@ -1,0 +1,27 @@
+<p-card [style]="{'width': '60%', 'margin-top': '2%', 'margin-left': '20%'}">
+  <div class="col-12" style="display:inline">
+    <label for="使用者列表">使用者列表</label>
+    <span style="margin-left: 70%;"></span>
+  </div>
+  <hr>
+  <p-table [value]="GETAllAccount" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+    [rowsPerPageOptions]="[5,10,15]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>姓名</th>
+        <th>帳號</th>
+        <th>職位</th>
+        <th>編輯</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element>
+      <tr>
+        <td>{{element.name}}</td>
+        <td>{{element.account}}</td>
+        <td>{{element.role_id}}</td>
+        <td><button styleClass="p-button-sm" pButton pRipple type="button" icon="pi pi-edit"
+            class="p-button-rounded p-button-secondary p-button-outlined"></button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
